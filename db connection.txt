@@ -1,0 +1,10 @@
+import pyodbc
+test = ('Driver={SQL Server};' 
+                          'Server=' + r'VIVOBOOK\SQLEXPRESS' + ';' 
+                          'Database='+'DB_connection' + ';'
+                          'trusted_conection = yes;')
+conn = pyodbc.connect(test)
+obj1 = '''BULK INSERT emp FROM "C:\\Users\\nachi\\PycharmProjects\\Practice\\emp.csv"WITH(FORMAT='CSV');'''
+temp = conn.cursor()
+temp.execute(obj1)
+conn.commit()
